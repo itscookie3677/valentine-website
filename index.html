@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Valentine's Day!</title>
+  <style>
+    /* Global Styles */
+    body {
+      background: url('https://source.unsplash.com/1600x900/?red-rose') no-repeat center center/cover;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+    /* Main Container */
+    .container {
+      padding: 50px;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 15px;
+      display: inline-block;
+      margin: 50px auto;
+      max-width: 800px;
+    }
+    h1 {
+      font-size: 3em;
+      margin-bottom: 0.2em;
+    }
+    p {
+      font-size: 1.5em;
+      margin-bottom: 1em;
+    }
+    .heart {
+      font-size: 4em;
+      color: #e25555;
+      animation: beat 1s infinite;
+    }
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+    footer {
+      margin-top: 40px;
+      font-size: 0.8em;
+      color: #555;
+    }
+    /* Modal Styling */
+    #modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    #modal-content {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    #modal-content button {
+      padding: 10px 20px;
+      font-size: 1em;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background: #e25555;
+      color: #fff;
+      margin: 10px;
+    }
+    /* Love Message Animation */
+    #loveMessage {
+      font-size: 1.5em;
+      color: #e25555;
+      margin-top: 20px;
+      opacity: 0;
+      animation: fadeIn 3s forwards;
+      animation-delay: 2s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    /* Section Styles */
+    section {
+      padding: 50px;
+      background: rgba(255,255,255,0.8);
+      margin: 50px auto;
+      border-radius: 15px;
+      max-width: 800px;
+    }
+    section h2 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+    section p {
+      font-size: 1.2em;
+    }
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+    .grid img {
+      border-radius: 10px;
+      width: calc(50% - 20px);
+      max-width: 300px;
+    }
+    /* Mobile Styles */
+    @media (max-width: 600px) {
+      .container, section {
+        padding: 20px;
+        margin: 20px auto;
+        width: 90%;
+      }
+      h1 {
+        font-size: 2em;
+      }
+      p, section p {
+        font-size: 1em;
+      }
+      .heart {
+        font-size: 3em;
+      }
+      #modal-content button {
+        padding: 8px 16px;
+        font-size: 0.9em;
+      }
+      section h2 {
+        font-size: 2em;
+      }
+      .grid img {
+        width: 100%;
+      }
+      #loveMessage {
+        font-size: 1.2em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Modal Pop-up -->
+  <div id="modal">
+    <div id="modal-content">
+      <p>Do you love me?</p>
+      <button id="yes-button">Yes</button>
+      <button id="no-button">No</button>
+    </div>
+  </div>
+  
+  <!-- Main Content -->
+  <div class="container">
+    <div class="heart">&#10084;</div>
+    <h1>Happy Valentine's Day, Shifa!</h1>
+    <p>
+      Every moment with you is a treasure. I cherish every smile, every laugh, and every memory we create together.
+    </p>
+    <div id="loveMessage">I love you, sweetie. From your Cookie, with all my heart!</div>
+    <img src="https://source.unsplash.com/featured/?romance" alt="Romantic Image" />
+    <footer>
+      <p>Made with love by Sufiyan (Cookie)</p>
+    </footer>
+  </div>
+  
+  <!-- Additional Sections -->
+  <section class="memories">
+    <h2>Our Memories</h2>
+    <div class="grid">
+      <img src="https://source.unsplash.com/300x200/?couple" alt="Memory 1" />
+      <img src="https://source.unsplash.com/300x200/?love" alt="Memory 2" />
+      <img src="https://source.unsplash.com/300x200/?romance" alt="Memory 3" />
+      <img src="https://source.unsplash.com/300x200/?valentine" alt="Memory 4" />
+    </div>
+  </section>
+  
+  <section class="quotes">
+    <h2>Love Quotes</h2>
+    <p id="quoteText">"Your love is a melody that fills my heart."</p>
+    <button id="newQuoteBtn">New Quote</button>
+  </section>
+  
+  <section class="music">
+    <h2>Our Song</h2>
+    <audio controls>
+      <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+  </section>
+  
+  <!-- JavaScript for Interactivity and Animations -->
+  <script>
+    let heartIntervalStarted = false;
+    
+    // Modal Button Events
+    document.getElementById('yes-button').addEventListener('click', function() {
+      document.getElementById('modal').style.display = 'none';
+      throwHearts();
+      startContinuousHeartShower();
+    });
+    
+    document.getElementById('no-button').addEventListener('click', function() {
+      document.getElementById('modal').style.display = 'none';
+      // Optionally, you can show a different effect/message for "No"
+      startContinuousHeartShower();
+    });
+    
+    // Function for a burst of hearts on clicking "Yes"
+    function throwHearts() {
+      const count = 30;
+      for (let i = 0; i < count; i++) {
+        setTimeout(() => {
+          let heart = document.createElement('span');
+          heart.innerText = '❤';
+          heart.style.position = 'fixed';
+          heart.style.left = Math.random() * 100 + 'vw';
+          heart.style.top = Math.random() * 100 + 'vh';
+          heart.style.fontSize = (Math.random() * 2 + 1) + 'em';
+          heart.style.opacity = 1;
+          heart.style.zIndex = 9999;
+          heart.style.color = '#e25555';
+          heart.style.transition = 'all 2s ease-out';
+          document.body.appendChild(heart);
+          setTimeout(() => {
+            heart.style.transform = 'translateY(-200px)';
+            heart.style.opacity = 0;
+          }, 100);
+          setTimeout(() => {
+            heart.remove();
+          }, 2100);
+        }, i * 100);
+      }
+    }
+    
+    // Function for a continuous, gentle heart shower
+    function startContinuousHeartShower() {
+      if (!heartIntervalStarted) {
+        heartIntervalStarted = true;
+        setInterval(() => {
+          let heart = document.createElement('span');
+          heart.innerText = '❤';
+          heart.style.position = 'fixed';
+          heart.style.left = Math.random() * 100 + 'vw';
+          heart.style.bottom = '-50px';
+          heart.style.fontSize = (Math.random() * 2 + 1) + 'em';
+          heart.style.opacity = 1;
+          heart.style.zIndex = 9999;
+          heart.style.color = '#e25555';
+          heart.style.transition = 'all 5s linear';
+          document.body.appendChild(heart);
+          setTimeout(() => {
+            heart.style.transform = 'translateY(-110vh)';
+            heart.style.opacity = 0;
+          }, 100);
+          setTimeout(() => {
+            heart.remove();
+          }, 5100);
+        }, 3000);
+      }
+    }
+    
+    // Love Quote Generator
+    document.getElementById('newQuoteBtn').addEventListener('click', function(){
+      const quotes = [
+        "Love is not finding someone to live with, it's finding someone you can't live without.",
+        "Every moment with you is a treasure.",
+        "I love you more than words can say.",
+        "You are my today and all of my tomorrows.",
+        "My heart beats for you, sweetie."
+      ];
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      document.getElementById('quoteText').innerText = quotes[randomIndex];
+    });
+  </script>
+</body>
+</html>
